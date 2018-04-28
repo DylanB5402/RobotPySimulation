@@ -28,8 +28,11 @@ class PhysicsEngine(object):
         '''
 
         # Simulate the drivetrain
-        l_motor = hal_data['CAN'][0]['value']
-        r_motor = hal_data['CAN'][1]['value']
+        try:
+            l_motor = hal_data['CAN'][0]['value']
+            r_motor = hal_data['CAN'][1]['value']
+        except(KeyError, IndexError):
+            return
 
         speed, rotation = drivetrains.two_motor_drivetrain(l_motor, r_motor, speed=16)
         self.physics_controller.drive(speed, rotation, tm_diff)

@@ -12,11 +12,11 @@ class Drive(Subsystem):
         self.navX = navx.AHRS.create_spi()
 
         self.left_motor.setInverted(True)
-        self.left_motor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute)
+        self.left_motor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 0)
         self.left_motor.setSensorPhase(True)
 
         self.right_motor.setInverted(False)
-        self.right_motor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute)
+        self.right_motor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 0)
         self.right_motor.setSensorPhase(False)
 
     def setPower(self, power):

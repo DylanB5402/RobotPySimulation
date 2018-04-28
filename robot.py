@@ -7,8 +7,10 @@ from commands import driveTime
 
 class Robot(CommandBasedRobot):
 
+    drive = drive.Drive()
+
     def robotInit(self):
-        self.drive = drive.Drive()
+        pass
 
     def disabledInit(self):
         pass
@@ -17,7 +19,7 @@ class Robot(CommandBasedRobot):
         pass
 
     def autonomousInit(self):
-        autoCommand = driveTime.DriveTime(5)
+        autoCommand = driveTime.DriveTime(-1, 5)
         autoCommand.start()
 
     def autonomousPeriodic(self):
@@ -35,6 +37,7 @@ class Robot(CommandBasedRobot):
     def testPeriodic(self):
         pass
 
+
 if __name__ == "__main__":
-    wpilib.run(Robot)
+    wpilib.run(Robot, physics_enabled=True)
 
